@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Basket Registration</title>
+<link rel="stylesheet" href="style.css">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="nav-container">
+    <div class="logo">
+      <i class="fas fa-basketball-ball"></i>
+      <span>K'Blaze BasketBall</span>
+    </div>
+    <div class="nav-menu">
+      <a href="index.html" class="nav-link active">Home</a>
+      <a href="daftar.html" class="nav-link">Daftar</a>
+      <a href="#" onclick="showAdminLogin()">Admin</a>
+    </div>
+  </div>
+</nav>
+
+<section class="panel-home">
+  <div class="panel-card">
+  <img src="k'blaze-logo.png" class="panel-logo">
+  <h1>Selamat Datang</h1>
+  <p>Website resmi pendaftaran anggota dari komunitas basket kami. Silakan daftar sekarang untuk menjadi bagian dari tim basket kami.</p>
+  <a href="daftar.html" class="btn-daftar">Daftar Sekarang</a>
+</div>
+</section>
+
+<!-- Admin Modal -->
+<div id="adminModal" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeAdminLogin()">&times;</span>
+    <div class="admin-login">
+      <h3>Admin Login</h3>
+      <form id="adminForm">
+        <input type="password" id="adminPassword" placeholder="Masukkan password" required>
+        <button type="submit" class="submit-btn">Login</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- Admin Panel -->
+<div id="adminPanel" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeAdminPanel()">&times;</span>
+    <div class="container">
+      <h2 style="color:#f39c12; text-align:center;">Data Pendaftar</h2>
+      <input type="text" id="searchInput" placeholder="Cari Nama..." onkeyup="searchRegistrants()" style="width:100%; padding:10px; margin:10px 0; border-radius:8px; border:none;">
+      <table style="width:100%; border-collapse:collapse; color:white;">
+        <thead>
+          <tr style="border-bottom:1px solid #fff;">
+            <th>No</th>
+            <th>Nama</th>
+            <th>Telepon</th>
+            <th>Tanggal</th>
+            <th>Aksi</th>
+          </tr>
+        </thead>
+        <tbody id="registrantsTableBody"></tbody>
+      </table>
+      <button onclick="clearAllData()" style="margin-top:15px; padding:10px 20px; border:none; border-radius:10px; background:#f39c12; color:#fff; cursor:pointer;">Hapus Semua</button>
+    </div>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
