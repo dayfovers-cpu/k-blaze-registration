@@ -37,7 +37,13 @@ tanggal: tanggal
 
 console.log("EMAIL TERKIRIM", response);
 
-alert("Pendaftaran berhasil! Data sudah dikirim.");
+// tampilkan notifikasi
+document.getElementById("successMessage").style.display = "block";
+
+// hilang setelah 4 detik
+setTimeout(function(){
+document.getElementById("successMessage").style.display = "none";
+},4000);
 
 })
 .catch(function(error){
