@@ -3,22 +3,38 @@ let registrants = JSON.parse(localStorage.getItem('basketRegistrants')) || [];
 const ADMIN_PASSWORD = 'admin123';
 
 // Tombol daftar
-document.getElementById('registrationForm')?.addEventListener('submit', function(e){
+document.getElementById('registrationForm').addEventListener('submit', function(e) {
     e.preventDefault();
-    const nama = document.getElementById('nama').value.trim();
-    const telepon = document.getElementById('telepon').value.trim();
-    if(!nama || !telepon){
-        alert('Nama dan Telepon wajib diisi!');
-        return;
-    }
-    const newRegistrant = {id: Date.now(), nama, telepon, tanggal: new Date().toLocaleString()};
-    registrants.unshift(newRegistrant);
+    
+    const nama = document.getElementById('nama').value;
+    const telepon = document.getElementById('telepon').value;
+    const tanggal = new Date().toLocaleString('id-ID');
+    
+    const registrant = { id: Date.now(), nama, telepon, tanggal };
+    
+    registrants.unshift(registrant);
     localStorage.setItem('basketRegistrants', JSON.stringify(registrants));
-
-    // Show success
-    document.getElementById('successMessage').style.display = 'block';
+    
+    // Kirim email
+    emailjs.send("service_124", "template_fkl04a6", {
+        nama: nama,
+        telepon: telepon,
+        tanggal: tanggal
+    })
+    .then(function(response) {
+        console.log("Email terkirim!", response.status, response.text);
+    }, function(error) {
+        console.error("Gagal kirim email:", error);
+    });
+    
+    // Reset form & tampilkan pesan sukses
     this.reset();
-    setTimeout(()=>{document.getElementById('successMessage').style.display='none';}, 4000);
+    document.getElementById('successMessage').style.display = 'block';
+    setTimeout(() => {
+        document.getElementById('successMessage').style.display = 'none';
+    }, 5000);
+
+    window.scrollTo({ top: 0, behavior: 'smooth' });
 });
 
 // Admin login
