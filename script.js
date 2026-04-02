@@ -46,7 +46,7 @@ document.getElementById("successMessage").style.display = "none";
 
 console.log("EMAIL GAGAL", error);
 
-alert("✅ Pendaftaran berhasil! Terima kasih telah mendaftar. Tim kami akan segera menghubungi Anda.);
+alert(" Pendaftaran berhasil! Terima kasih telah mendaftar. Tim kami akan segera menghubungi Anda.");
 
 });
 
