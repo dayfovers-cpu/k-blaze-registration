@@ -35,8 +35,6 @@ console.log("EMAIL TERKIRIM", response);
 
 document.getElementById("successMessage").style.display = "block";
 
-document.getElementById("registrationForm").reset();
-
 setTimeout(function(){
 document.getElementById("successMessage").style.display = "none";
 },4000);
@@ -46,7 +44,13 @@ document.getElementById("successMessage").style.display = "none";
 
 console.log("EMAIL GAGAL", error);
 
-alert(" Pendaftaran berhasil! Terima kasih telah mendaftar. Tim kami akan segera menghubungi Anda.");
+alert("Data berhasil disimpan. Kami akan segera menghubungi Anda.");
+
+})
+.finally(function(){
+
+// reset form selalu dijalankan
+document.getElementById("registrationForm").reset();
 
 });
 
